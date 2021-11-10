@@ -63,11 +63,5 @@ public:
 
 int main()
 {
-    int a = 0;
-    cout<<!a<<endl;
-    if (a)
-    {
-        cout<<666<<endl;
-    }
     return 0;
 }
