@@ -3,6 +3,8 @@ using namespace std;
 
 int main()
 {
+    int a = 5/2;
     cout << "hello world~" << endl;
+    cout <<a<<endl;
     return 0;
 }
