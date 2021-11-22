@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <queue>
+#include <stack>
 using namespace std;
 // 广度优先搜索二叉树: 借助队列先进先出的特点
 
@@ -37,7 +38,7 @@ public:
         }
         return output;
     }
-    vector<vector<int>> levelOrder(TreeNode *root)
+    vector<vector<int>> levelOrder2(TreeNode *root)
     {
         vector<vector<int> > output;
         if (root == NULL)
@@ -65,6 +66,54 @@ public:
             output.push_back(sub_output);
         }
         return output;
+    }
+
+    vector<vector<int> >levelOrder(TreeNode *root)
+    {
+        vector<vector<int> > output;
+        if (root == NULL)
+            return output;
+        
+        stack<TreeNode *> tree_stack_lr, tree_stack_rl;
+
+        int layer = 1;
+        tree_stack_lr.push(root);
+        while ((!tree_stack_lr.empty()) || (!tree_stack_rl.empty()))
+        {
+            vector<int> sub_output;
+            if (layer%2 == 1)
+                for (int i=tree_stack_lr.size(); i>0; i--)
+                {
+                    TreeNode *tree_node = tree_stack_lr.top();
+                    tree_stack_lr.pop();
+                    sub_output.push_back(tree_node->val);
+
+                    if (tree_node->left != NULL)
+                        tree_stack_rl.push(tree_node->left);
+                    
+                    if (tree_node->right != NULL)
+                        tree_stack_rl.push(tree_node->right);
+                }
+            else                
+                for (int i=tree_stack_rl.size(); i>0; i--)
+                {
+                    TreeNode *tree_node = tree_stack_rl.top();
+                    tree_stack_rl.pop();
+                    sub_output.push_back(tree_node->val);
+
+                    if (tree_node->right != NULL)
+                        tree_stack_lr.push(tree_node->right);
+
+                    if (tree_node->left != NULL)
+                        tree_stack_lr.push(tree_node->left);                        
+
+                }
+            layer += 1;
+            output.push_back(sub_output);
+        }
+        return output;
+
+        
     }
 };
 
