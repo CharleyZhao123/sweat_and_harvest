@@ -7,9 +7,9 @@
       "request": "launch",
       "args": [],
       "stopAtEntry": true,
-      "cwd": "/Users/charleyzhao/code/sweat_and_harvest",
+      "cwd": "/Users/charleyzhao/code/sweat_and_harvest/cpp",
       "environment": [],
-      "program": "/Users/charleyzhao/code/sweat_and_harvest/build/Debug/outDebug",
+      "program": "/Users/charleyzhao/code/sweat_and_harvest/cpp/build/Debug/outDebug",
       "internalConsoleOptions": "openOnSessionStart",
       "MIMode": "lldb",
       "externalConsole": true
